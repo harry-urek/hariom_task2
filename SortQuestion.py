@@ -1,6 +1,21 @@
 import json
 import logging
 
+# Configure logging
+logging.basicConfig(filename='processing.log', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
+
+def filter_questions(questions, difficulty_level=None, tags=None):
+    filtered_questions = []
+    for question in questions:
+        if difficulty_level and question['difficulty_level'] != difficulty_level:
+            continue
+        if tags and not any(tag in question['tags'] for tag in tags):
+            continue
+        filtered_questions.append(question)
+    return filtered_questions
+
 
 def group_questions_by_attributes(questions):
     grouped_questions = {
@@ -50,4 +65,27 @@ def group_questions_by_attributes(questions):
 
 
 def main():
-    pass
+
+    with open('questions.json', 'r') as file:
+        data = json.load(file)
+        questions = data['questions']
+
+    difficulty_level = input(
+        "Enter the difficulty level to filter (easy, medium, hard), or leave blank for all: ").lower()
+    tags = input(
+        "Enter the tags to filter (comma-separated), or leave blank for all: ").lower().split(',')
+    tags = [tag.strip() for tag in tags if tag.strip()]
+
+    filtered_questions = filter_questions(
+        questions, difficulty_level if difficulty_level else None, tags if tags else None)
+
+    grouped_questions = group_questions_by_attributes(filtered_questions)
+
+    with open('grouped_questions.json', 'w') as file:
+        json.dump(grouped_questions, file, indent=4)
+
+    logging.info('Questions grouped and saved to grouped_questions.json')
+
+
+if __name__ == '__main__':
+    main()
