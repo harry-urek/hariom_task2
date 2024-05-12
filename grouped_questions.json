@@ -1,0 +1,290 @@
+{
+    "hard": [],
+    "medium": [
+        {
+            "question": "Given a string, find the length of the longest substring without repeating characters.",
+            "answer": "This problem can be solved using the 'Sliding Window' technique. Maintain a hash set to keep track of the characters in the current window. Expand the window by moving the right pointer until a duplicate character is encountered. Then, contract the window by moving the left pointer until the duplicate character is removed from the window. The maximum window size encountered is the length of the longest substring without repeating characters.",
+            "difficulty_level": "medium",
+            "tags": [
+                "string",
+                "sliding_window",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Implement a function to find the longest palindromic substring in a given string.",
+            "answer": "This problem can be solved using dynamic programming. Create a 2D boolean array to store whether a substring is a palindrome or not. Fill the diagonal elements (substrings of length 1) as true. Then, iterate through the string, expanding the substring length from 2 to the entire string length. For each substring, check if the first and last characters are the same and if the remaining substring (without the first and last characters) is a palindrome. Update the boolean array and keep track of the longest palindromic substring encountered.",
+            "difficulty_level": "medium",
+            "tags": [
+                "string",
+                "sliding_window",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Implement a function to find the shortest path between two nodes in an unweighted graph.",
+            "answer": "This problem can be solved using breadth-first search (BFS). Initialize a queue with the source node and a set to keep track of visited nodes. Then, iterate until the queue is empty or the destination node is found. In each iteration, dequeue a node, mark it as visited, and enqueue its unvisited neighbors. When the destination node is dequeued, you can reconstruct the shortest path by backtracking from the destination node to the source node using the parent pointers maintained during the BFS.",
+            "difficulty_level": "medium",
+            "tags": [
+                "graph",
+                "breadth_first_search"
+            ]
+        },
+        {
+            "question": "Given an unsorted array of integers, find the length of the longest consecutive sequence of numbers.",
+            "answer": "One approach is to use a hash set to store all the numbers in the array. Then, iterate through the array and for each number num, check if num - 1 exists in the set. If it doesn't, it means num is the start of a consecutive sequence. Increment a counter until you find a number that doesn't have a consecutive number in the set. Update the maximum length encountered and continue iterating. This approach has a time complexity of O(n).",
+            "difficulty_level": "medium",
+            "tags": [
+                "array",
+                "hash_table",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Implement a function to find the longest common subsequence between two strings.",
+            "answer": "This problem can be solved using dynamic programming. Create a 2D array to store the length of the longest common subsequence (LCS) for each pair of substrings (one from each input string). Initialize the first row and column with zeros. Then, iterate through the strings and fill the remaining cells based on whether the characters at the current indices match or not. The value in the bottom-right cell will be the length of the LCS. The actual LCS can be reconstructed by backtracking through the matrix.",
+            "difficulty_level": "medium",
+            "tags": [
+                "string",
+                "dynamic_programming"
+            ]
+        }
+    ],
+    "easy": [
+        {
+            "question": "Given an array of integers, find the two numbers such that they add up to a specific target number.",
+            "answer": "This is a classic problem known as the 'Two Sum' problem. One approach is to use a hash table (dictionary) to store the complement of each number (target - num) as the key and the index as the value. Then, for each number in the array, check if its complement is in the hash table. If it is, return the indices of the current number and its complement.",
+            "difficulty_level": "easy",
+            "tags": [
+                "array",
+                "hash_table"
+            ]
+        },
+        {
+            "question": "Implement a function to determine if a string has all unique characters.",
+            "answer": "One approach is to use a hash set or a boolean array to keep track of the characters encountered so far. Iterate through the string and check if the current character is already in the set/array. If it is, return false (since the character is a duplicate). Otherwise, add the character to the set/array and continue. Return true if all characters are unique.",
+            "difficulty_level": "easy",
+            "tags": [
+                "string"
+            ]
+        },
+        {
+            "question": "Implement a function to reverse a linked list.",
+            "answer": "There are multiple approaches to this problem, including iterative and recursive solutions. One iterative approach is to use three pointers: prev, curr, and next. Initialize prev and curr to the head of the list, and next to null. Then, iterate through the list, updating the pointers in each iteration to reverse the links. After the loop, the prev pointer will be pointing to the new head of the reversed list.",
+            "difficulty_level": "easy",
+            "tags": [
+                "linked_list",
+                "string",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Given two sorted arrays, merge them into a single sorted array.",
+            "answer": "This problem can be solved using the 'Two Pointer' technique. Create a new array with a length equal to the sum of the lengths of the input arrays. Initialize three pointers: one for each input array and one for the merged array. Iterate through the input arrays, comparing the elements at the current pointers, and add the smaller element to the merged array. Increment the corresponding pointer and continue until all elements from both arrays are merged.",
+            "difficulty_level": "easy",
+            "tags": [
+                "array",
+                "two_pointers",
+                "sorting"
+            ]
+        },
+        {
+            "question": "Given a binary tree, implement a function to perform a level-order traversal.",
+            "answer": "This problem can be solved using a queue data structure. Initialize an empty queue and enqueue the root node. Then, iterate until the queue is empty. In each iteration, dequeue a node, process it (e.g., print its value), and enqueue its left and right children (if they exist). This way, the nodes are processed level by level, from left to right.",
+            "difficulty_level": "easy",
+            "tags": [
+                "binary_tree",
+                "breadth_first_search"
+            ]
+        }
+    ],
+    "graph": [
+        {
+            "question": "Implement a function to find the shortest path between two nodes in an unweighted graph.",
+            "answer": "This problem can be solved using breadth-first search (BFS). Initialize a queue with the source node and a set to keep track of visited nodes. Then, iterate until the queue is empty or the destination node is found. In each iteration, dequeue a node, mark it as visited, and enqueue its unvisited neighbors. When the destination node is dequeued, you can reconstruct the shortest path by backtracking from the destination node to the source node using the parent pointers maintained during the BFS.",
+            "difficulty_level": "medium",
+            "tags": [
+                "graph",
+                "breadth_first_search"
+            ]
+        }
+    ],
+    "two_pointer": [
+        {
+            "question": "Given two sorted arrays, merge them into a single sorted array.",
+            "answer": "This problem can be solved using the 'Two Pointer' technique. Create a new array with a length equal to the sum of the lengths of the input arrays. Initialize three pointers: one for each input array and one for the merged array. Iterate through the input arrays, comparing the elements at the current pointers, and add the smaller element to the merged array. Increment the corresponding pointer and continue until all elements from both arrays are merged.",
+            "difficulty_level": "easy",
+            "tags": [
+                "array",
+                "two_pointers",
+                "sorting"
+            ]
+        }
+    ],
+    "sorting": [
+        {
+            "question": "Given two sorted arrays, merge them into a single sorted array.",
+            "answer": "This problem can be solved using the 'Two Pointer' technique. Create a new array with a length equal to the sum of the lengths of the input arrays. Initialize three pointers: one for each input array and one for the merged array. Iterate through the input arrays, comparing the elements at the current pointers, and add the smaller element to the merged array. Increment the corresponding pointer and continue until all elements from both arrays are merged.",
+            "difficulty_level": "easy",
+            "tags": [
+                "array",
+                "two_pointers",
+                "sorting"
+            ]
+        }
+    ],
+    "string": [
+        {
+            "question": "Implement a function to determine if a string has all unique characters.",
+            "answer": "One approach is to use a hash set or a boolean array to keep track of the characters encountered so far. Iterate through the string and check if the current character is already in the set/array. If it is, return false (since the character is a duplicate). Otherwise, add the character to the set/array and continue. Return true if all characters are unique.",
+            "difficulty_level": "easy",
+            "tags": [
+                "string"
+            ]
+        },
+        {
+            "question": "Given a string, find the length of the longest substring without repeating characters.",
+            "answer": "This problem can be solved using the 'Sliding Window' technique. Maintain a hash set to keep track of the characters in the current window. Expand the window by moving the right pointer until a duplicate character is encountered. Then, contract the window by moving the left pointer until the duplicate character is removed from the window. The maximum window size encountered is the length of the longest substring without repeating characters.",
+            "difficulty_level": "medium",
+            "tags": [
+                "string",
+                "sliding_window",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Implement a function to reverse a linked list.",
+            "answer": "There are multiple approaches to this problem, including iterative and recursive solutions. One iterative approach is to use three pointers: prev, curr, and next. Initialize prev and curr to the head of the list, and next to null. Then, iterate through the list, updating the pointers in each iteration to reverse the links. After the loop, the prev pointer will be pointing to the new head of the reversed list.",
+            "difficulty_level": "easy",
+            "tags": [
+                "linked_list",
+                "string",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Implement a function to find the longest palindromic substring in a given string.",
+            "answer": "This problem can be solved using dynamic programming. Create a 2D boolean array to store whether a substring is a palindrome or not. Fill the diagonal elements (substrings of length 1) as true. Then, iterate through the string, expanding the substring length from 2 to the entire string length. For each substring, check if the first and last characters are the same and if the remaining substring (without the first and last characters) is a palindrome. Update the boolean array and keep track of the longest palindromic substring encountered.",
+            "difficulty_level": "medium",
+            "tags": [
+                "string",
+                "sliding_window",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Implement a function to find the longest common subsequence between two strings.",
+            "answer": "This problem can be solved using dynamic programming. Create a 2D array to store the length of the longest common subsequence (LCS) for each pair of substrings (one from each input string). Initialize the first row and column with zeros. Then, iterate through the strings and fill the remaining cells based on whether the characters at the current indices match or not. The value in the bottom-right cell will be the length of the LCS. The actual LCS can be reconstructed by backtracking through the matrix.",
+            "difficulty_level": "medium",
+            "tags": [
+                "string",
+                "dynamic_programming"
+            ]
+        }
+    ],
+    "array": [
+        {
+            "question": "Given an array of integers, find the two numbers such that they add up to a specific target number.",
+            "answer": "This is a classic problem known as the 'Two Sum' problem. One approach is to use a hash table (dictionary) to store the complement of each number (target - num) as the key and the index as the value. Then, for each number in the array, check if its complement is in the hash table. If it is, return the indices of the current number and its complement.",
+            "difficulty_level": "easy",
+            "tags": [
+                "array",
+                "hash_table"
+            ]
+        },
+        {
+            "question": "Given two sorted arrays, merge them into a single sorted array.",
+            "answer": "This problem can be solved using the 'Two Pointer' technique. Create a new array with a length equal to the sum of the lengths of the input arrays. Initialize three pointers: one for each input array and one for the merged array. Iterate through the input arrays, comparing the elements at the current pointers, and add the smaller element to the merged array. Increment the corresponding pointer and continue until all elements from both arrays are merged.",
+            "difficulty_level": "easy",
+            "tags": [
+                "array",
+                "two_pointers",
+                "sorting"
+            ]
+        },
+        {
+            "question": "Given an unsorted array of integers, find the length of the longest consecutive sequence of numbers.",
+            "answer": "One approach is to use a hash set to store all the numbers in the array. Then, iterate through the array and for each number num, check if num - 1 exists in the set. If it doesn't, it means num is the start of a consecutive sequence. Increment a counter until you find a number that doesn't have a consecutive number in the set. Update the maximum length encountered and continue iterating. This approach has a time complexity of O(n).",
+            "difficulty_level": "medium",
+            "tags": [
+                "array",
+                "hash_table",
+                "dynamic_programming"
+            ]
+        }
+    ],
+    "dynamic_programming": [
+        {
+            "question": "Given a string, find the length of the longest substring without repeating characters.",
+            "answer": "This problem can be solved using the 'Sliding Window' technique. Maintain a hash set to keep track of the characters in the current window. Expand the window by moving the right pointer until a duplicate character is encountered. Then, contract the window by moving the left pointer until the duplicate character is removed from the window. The maximum window size encountered is the length of the longest substring without repeating characters.",
+            "difficulty_level": "medium",
+            "tags": [
+                "string",
+                "sliding_window",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Implement a function to reverse a linked list.",
+            "answer": "There are multiple approaches to this problem, including iterative and recursive solutions. One iterative approach is to use three pointers: prev, curr, and next. Initialize prev and curr to the head of the list, and next to null. Then, iterate through the list, updating the pointers in each iteration to reverse the links. After the loop, the prev pointer will be pointing to the new head of the reversed list.",
+            "difficulty_level": "easy",
+            "tags": [
+                "linked_list",
+                "string",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Implement a function to find the longest palindromic substring in a given string.",
+            "answer": "This problem can be solved using dynamic programming. Create a 2D boolean array to store whether a substring is a palindrome or not. Fill the diagonal elements (substrings of length 1) as true. Then, iterate through the string, expanding the substring length from 2 to the entire string length. For each substring, check if the first and last characters are the same and if the remaining substring (without the first and last characters) is a palindrome. Update the boolean array and keep track of the longest palindromic substring encountered.",
+            "difficulty_level": "medium",
+            "tags": [
+                "string",
+                "sliding_window",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Given an unsorted array of integers, find the length of the longest consecutive sequence of numbers.",
+            "answer": "One approach is to use a hash set to store all the numbers in the array. Then, iterate through the array and for each number num, check if num - 1 exists in the set. If it doesn't, it means num is the start of a consecutive sequence. Increment a counter until you find a number that doesn't have a consecutive number in the set. Update the maximum length encountered and continue iterating. This approach has a time complexity of O(n).",
+            "difficulty_level": "medium",
+            "tags": [
+                "array",
+                "hash_table",
+                "dynamic_programming"
+            ]
+        },
+        {
+            "question": "Implement a function to find the longest common subsequence between two strings.",
+            "answer": "This problem can be solved using dynamic programming. Create a 2D array to store the length of the longest common subsequence (LCS) for each pair of substrings (one from each input string). Initialize the first row and column with zeros. Then, iterate through the strings and fill the remaining cells based on whether the characters at the current indices match or not. The value in the bottom-right cell will be the length of the LCS. The actual LCS can be reconstructed by backtracking through the matrix.",
+            "difficulty_level": "medium",
+            "tags": [
+                "string",
+                "dynamic_programming"
+            ]
+        }
+    ],
+    "breadth_first_search": [
+        {
+            "question": "Given a binary tree, implement a function to perform a level-order traversal.",
+            "answer": "This problem can be solved using a queue data structure. Initialize an empty queue and enqueue the root node. Then, iterate until the queue is empty. In each iteration, dequeue a node, process it (e.g., print its value), and enqueue its left and right children (if they exist). This way, the nodes are processed level by level, from left to right.",
+            "difficulty_level": "easy",
+            "tags": [
+                "binary_tree",
+                "breadth_first_search"
+            ]
+        },
+        {
+            "question": "Implement a function to find the shortest path between two nodes in an unweighted graph.",
+            "answer": "This problem can be solved using breadth-first search (BFS). Initialize a queue with the source node and a set to keep track of visited nodes. Then, iterate until the queue is empty or the destination node is found. In each iteration, dequeue a node, mark it as visited, and enqueue its unvisited neighbors. When the destination node is dequeued, you can reconstruct the shortest path by backtracking from the destination node to the source node using the parent pointers maintained during the BFS.",
+            "difficulty_level": "medium",
+            "tags": [
+                "graph",
+                "breadth_first_search"
+            ]
+        }
+    ],
+    "sliding_window": [],
+    "hash_table": [],
+    "binary_tree": []
+}
