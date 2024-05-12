@@ -7,6 +7,24 @@ logging.basicConfig(filename='processing.log', level=logging.INFO,
 
 
 def filter_questions(questions, difficulty_level=None, tags=None):
+    """
+    The function `filter_questions` filters a list of questions based on specified difficulty level and
+    tags.
+
+    :param questions: The `questions` parameter is a list of dictionaries, where each dictionary
+    represents a question. Each question dictionary likely contains information such as the question
+    text, difficulty level, and tags associated with the question
+    :param difficulty_level: The `difficulty_level` parameter in the `filter_questions` function is used
+    to filter questions based on their difficulty level. If a difficulty level is provided, only
+    questions with that specific difficulty level will be included in the filtered list. If no
+    difficulty level is provided (i.e., `None`),
+    :param tags: The `tags` parameter in the `filter_questions` function is used to filter questions
+    based on specific tags. It allows you to specify one or more tags, and only questions that have at
+    least one of the specified tags will be included in the filtered result
+    :return: The function `filter_questions` returns a list of questions that match the specified
+    difficulty level and tags criteria. If no criteria are specified (difficulty level and tags are both
+    None), all questions are returned.
+    """
     filtered_questions = []
     for question in questions:
         if difficulty_level and question['difficulty_level'] != difficulty_level:
@@ -18,6 +36,19 @@ def filter_questions(questions, difficulty_level=None, tags=None):
 
 
 def group_questions_by_attributes(questions):
+    """
+    The function `group_questions_by_attributes` categorizes a list of questions based on their
+    difficulty level and tags into different groups.
+
+    :param questions: It looks like you are trying to group a list of questions based on their
+    attributes such as difficulty level and tags. The function `group_questions_by_attributes` takes a
+    list of questions as input and categorizes them into different groups based on their difficulty
+    level and tags
+    :return: The function `group_questions_by_attributes` returns a dictionary where questions are
+    grouped based on their difficulty level and tags. The keys in the dictionary represent different
+    attributes such as difficulty level ('hard', 'medium', 'easy') and tags ('graph', 'two_pointer',
+    'sorting', 'string', 'array', 'dynamic_programming', 'breadth_first_search', 'sliding_window', 'hash
+    """
     grouped_questions = {
         'hard': [],
         'medium': [],
@@ -65,26 +96,37 @@ def group_questions_by_attributes(questions):
 
 
 def main():
+    """
+    The main function reads questions from a JSON file, filters them based on difficulty level and tags,
+    groups them by attributes, and saves the grouped questions to a new JSON file.
+    """
 
-    with open('questions.json', 'r') as file:
-        data = json.load(file)
-        questions = data['questions']
+    try:
+        with open('questions.json', 'r') as file:
+            data = json.load(file)
+            questions = data['questions']
 
-    difficulty_level = input(
-        "Enter the difficulty level to filter (easy, medium, hard), or leave blank for all: ").lower()
-    tags = input(
-        "Enter the tags to filter (comma-separated), or leave blank for all: ").lower().split(',')
-    tags = [tag.strip() for tag in tags if tag.strip()]
+        difficulty_level = input(
+            "Enter the difficulty level to filter (easy, medium, hard), or leave blank for all: ").lower()
+        tags = input(
+            "Enter the tags to filter (comma-separated), or leave blank for all: ").lower().split(',')
+        tags = [tag.strip() for tag in tags if tag.strip()]
 
-    filtered_questions = filter_questions(
-        questions, difficulty_level if difficulty_level else None, tags if tags else None)
+        filtered_questions = filter_questions(
+            questions, difficulty_level if difficulty_level else None, tags if tags else None)
 
-    grouped_questions = group_questions_by_attributes(filtered_questions)
+        grouped_questions = group_questions_by_attributes(filtered_questions)
 
-    with open('grouped_questions.json', 'w') as file:
-        json.dump(grouped_questions, file, indent=4)
+        with open('grouped_questions.json', 'w') as file:
+            json.dump(grouped_questions, file, indent=4)
 
-    logging.info('Questions grouped and saved to grouped_questions.json')
+        logging.info('Questions grouped and saved to grouped_questions.json')
+    except FileNotFoundError:
+        logging.error('Error: questions.json file not found')
+    except json.JSONDecodeError:
+        logging.error('Error: Invalid JSON format in questions.json')
+    except Exception as e:
+        logging.error(f'Error: {str(e)}')
 
 
 if __name__ == '__main__':
